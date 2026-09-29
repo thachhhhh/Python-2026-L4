@@ -11,7 +11,6 @@ courses = []
     # {'id': 'MAT1.002','name':'Linear Algebra'}
 
 marks = {}
-#NO YOU
 
 def input_number_of_students(): #total of students
     return int(input("Enter number of students: "))
