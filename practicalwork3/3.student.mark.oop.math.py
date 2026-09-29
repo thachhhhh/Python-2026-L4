@@ -11,7 +11,7 @@ courses = []
     # {'id': 'MAT1.002','name':'Linear Algebra'}
 
 marks = {}
-#nIGGA NIGGA NIGGA
+
 
 def input_number_of_students(): #total of students
     return int(input("Enter number of students: "))
@@ -37,8 +37,8 @@ def input_course_info():#add courses info
     print("\n------ Course_Info---------")
     num = input_number_of_courses()
     for i in range(num):
-        c_id = input("Course ID: ")
-        c_name = input("Course Name: ")
+        c_id = input(f"Course{i+1} ID: ")
+        c_name = input(f"Course{i+1} Name: ")
         courses.append({'id':c_id,'name':c_name})
 
 def course_lists():#list courses
@@ -100,6 +100,8 @@ def show_student_marks():#show student marks
             found = True
     if not found:
         print("Marks not found")       
+
+
 
 input_students_information()
 student_lists()
