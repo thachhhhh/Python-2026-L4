@@ -22,7 +22,7 @@ def get_input(stdscr, prompt_str):
     curses.noecho()
     return input_bytes.decode('utf-8').strip()
 
-def wait_for_key(stdscr):
+def wait_for_key(stdscr,row =10):
     """Waitting for user request to Menu"""
     stdscr.addstr("\nClick any button to return")
     stdscr.refresh()
@@ -96,16 +96,20 @@ def input_course_marks(stdscr):#add marks to courses
         stdscr.addstr(0,0, "No students")
         wait_for_key(stdscr)
         return
-    #Display courses
     stdscr.clear()
-    stdscr.addstr(0,0,"\n----Available courses----")
     row = 2
     for course in courses:
-        stdscr.addstr(row,0,f"ID:{course['id']},Name:{course['name']}")
+        stdscr.addstr(row,0,f"ID:{course['id']},Name:{course['name']}")# this runs after stdscr.addstr(0,0,"\n----Selecting Course----")
         row +=1
     #Select courses
     stdscr.addstr(0,0,"\n----Selecting Course----")
-    course_id = get_input(stdscr,"Enter Course ID: ")
+    # course_id = get_input(stdscr,"Enter Course ID: ")
+    stdscr.addstr(row+1,0,"Enter Course ID: ")
+    curses.echo()
+    input_bytes = stdscr.getstr(row + 2, 0)
+    curses.noecho()
+    course_id = input_bytes.decode('utf-8').strip()
+    
     #check if course exists
     selected_course = None
     for course in courses:
